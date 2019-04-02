@@ -59,7 +59,7 @@ class Base extends React.Component {
         return (
             <div style={{ margin: '5em' }}>
                 <Paper style={{ padding: '5em' }}>
-                    <Typography variant='h2'>Simple Form</Typography>
+                    <Typography variant='h2' gutterBottom>Simple Form</Typography>
                     <Form
                         onSubmit={this.onSubmit}
                         initialValues={{ employed: true, stooge: "larry" }}

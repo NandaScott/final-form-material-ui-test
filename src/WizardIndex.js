@@ -4,7 +4,7 @@ import Wizard from './Wizard'
 import CustomCheckbox from "./CustomCheckbox";
 import CustomRadio from "./CustomRadio";
 import CustomTextField from "./CustomTextField";
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, MenuItem } from '@material-ui/core';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -25,141 +25,183 @@ const Error = ({ name }) => (
 
 const required = value => (value ? undefined : 'Required')
 
+const colors = [
+    {
+        value: '#ff0000',
+        label: 'Red'
+    },
+    {
+        value: '#0050ff',
+        label: 'Blue'
+    },
+    {
+        value: '#26ff00',
+        label: 'Green'
+    }
+]
+
+const toppings = [
+    {
+        value: 'ham',
+        label: 'Ham'
+    },
+    {
+        value: 'mushrooms',
+        label: 'Mushrooms'
+    },
+    {
+        value: 'cheese',
+        label: 'Cheese'
+    },
+    {
+        value: 'chicken',
+        label: 'Chicken'
+    },
+    {
+        value: 'pineapple',
+        label: 'Pinapple'
+    }
+]
+
 class WizardIndex extends React.Component {
     render() {
         return (
             <div style={{ margin: '5em' }}>
                 <Paper style={{ padding: '5em' }}>
-                    <Typography variant='h2'>Wizard Form</Typography>
+                    <Typography variant='h2' gutterBottom>Wizard Form</Typography>
                     <Wizard
                     initialValues={{ employed: true, stooge: 'larry' }}
                     onSubmit={onSubmit}
                     >
-                    <Wizard.Page>
-                        <div style={{ marginBottom: '1em' }}>
-                            <Field
-                            name="firstName"
-                            component={CustomTextField}
-                            type="text"
-                            label="First Name"
-                            variant="outlined"
-                            />
-                            <Error name="firstName" />
-                        </div>
-                        <div>
-                        <label>Last Name</label>
-                        <Field
-                            name="lastName"
-                            component="input"
-                            type="text"
-                            placeholder="Last Name"
-                            validate={required}
-                        />
-                        <Error name="lastName" />
-                        </div>
-                    </Wizard.Page>
-                    <Wizard.Page
-                        validate={values => {
-                        const errors = {}
-                        if (!values.email) {
-                            errors.email = 'Required'
-                        }
-                        if (!values.favoriteColor) {
-                            errors.favoriteColor = 'Required'
-                        }
-                        return errors
-                        }}
-                    >
-                        <div>
-                        <label>Email</label>
-                        <Field
-                            name="email"
-                            component="input"
-                            type="email"
-                            placeholder="Email"
-                        />
-                        <Error name="email" />
-                        </div>
-                        <div>
-                        <label>Favorite Color</label>
-                        <Field name="favoriteColor" component="select">
-                            <option />
-                            <option value="#ff0000">Red</option>
-                            <option value="#00ff00">Green</option>
-                            <option value="#0000ff">Blue</option>
-                        </Field>
-                        <Error name="favoriteColor" />
-                        </div>
-                    </Wizard.Page>
-                    <Wizard.Page
-                        validate={values => {
-                        const errors = {}
-                        if (!values.toppings) {
-                            errors.toppings = 'Required'
-                        } else if (values.toppings.length < 2) {
-                            errors.toppings = 'Choose more'
-                        }
-                        return errors
-                        }}
-                    >
-                        <div>
-                        <label>Employed?</label>
-                        <Field name="employed" component="input" type="checkbox" />
-                        </div>
-                        <div>
-                        <label>Toppings</label>
-                        <Field name="toppings" component="select" multiple>
-                            <option value="ham">Ham</option>
-                            <option value="mushrooms">Mushrooms</option>
-                            <option value="cheese">Cheese</option>
-                            <option value="chicken">Chicken</option>
-                            <option value="pineapple">Pinapple</option>
-                        </Field>
-                        <Error name="toppings" />
-                        </div>
-                    </Wizard.Page>
-                    <Wizard.Page
-                        validate={values => {
-                        const errors = {}
-                        if (!values.notes) {
-                            errors.notes = 'Required'
-                        }
-                        return errors
-                        }}
-                    >
-                        <div>
-                        <label>Best Stooge?</label>
-                        <div>
-                            <label>
-                            <Field
-                                name="stooge"
-                                component="input"
-                                type="radio"
-                                value="larry"
-                            />{' '}
-                            Larry
-                            </label>
-                            <label>
-                            <Field name="stooge" component="input" type="radio" value="moe" />{' '}
-                            Moe
-                            </label>
-                            <label>
-                            <Field
-                                name="stooge"
-                                component="input"
-                                type="radio"
-                                value="curly"
-                            />{' '}
-                            Curly
-                            </label>
-                        </div>
-                        </div>
-                        <div>
-                        <label>Notes</label>
-                        <Field name="notes" component="textarea" placeholder="Notes" />
-                        <Error name="notes" />
-                        </div>
-                    </Wizard.Page>
+                        <Wizard.Page>
+                            <div style={{ marginBottom: '1em' }}>
+                                <Field
+                                name="firstName"
+                                component={CustomTextField}
+                                type="text"
+                                label="First Name"
+                                variant="outlined"
+                                />
+                            </div>
+                            <div>
+                                <Field
+                                    name="lastName"
+                                    component={CustomTextField}
+                                    type="text"
+                                    placeholder="Last Name"
+                                    variant='outlined'
+                                />
+                            </div>
+                        </Wizard.Page>
+                        <Wizard.Page
+                            validate={values => {
+                            const errors = {}
+                            if (!values.email) {
+                                errors.email = 'Required'
+                            }
+                            if (!values.favoriteColor) {
+                                errors.favoriteColor = 'Required'
+                            }
+                            return errors
+                            }}
+                        >
+                            <div>
+                                <Field
+                                    name="email"
+                                    component={CustomTextField}
+                                    placeholder="Email"
+                                    variant='outlined'
+                                    margin='normal'
+                                />
+                            </div>
+                            <div>
+                                <Field
+                                    name='favoriteColor'
+                                    component={CustomTextField}
+                                    select
+                                    variant='outlined'
+                                    label='Favorite Color'
+                                    fullWidth
+                                >
+                                    { colors.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+                                    ))}
+                                </Field>
+                            </div>
+                        </Wizard.Page>
+                        <Wizard.Page
+                            validate={values => {
+                            const errors = {}
+                            if (!values.toppings) {
+                                errors.toppings = 'Required'
+                            } else if (values.toppings.length < 1) {
+                                errors.toppings = 'Choose one'
+                            }
+                            return errors
+                            }}
+                        >
+                            <div>
+                                <Field name="employed" component={CustomCheckbox} type="checkbox"/>
+                                <label>Employed?</label>
+                            </div>
+                            <div>
+                                <Field
+                                    name='toppings'
+                                    component={CustomTextField}
+                                    select
+                                    variant='outlined'
+                                    label='Favorite Topping'
+                                    fullWidth
+                                >
+                                    { toppings.map(option => (
+                                        <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+                                    ))}
+                                </Field>
+                            </div>
+                        </Wizard.Page>
+                        <Wizard.Page
+                            validate={values => {
+                            const errors = {}
+                            if (!values.notes) {
+                                errors.notes = 'Required'
+                            }
+                            return errors
+                            }}
+                        >
+                            <div>
+                                <label>Favorite Stooge?</label>
+                                <label>
+                                    <Field
+                                    name="stooge"
+                                    component={CustomRadio}
+                                    type="radio"
+                                    value="larry"
+                                    />
+                                    Larry
+                                </label>
+                                <label>
+                                    <Field
+                                    name="stooge"
+                                    component={CustomRadio}
+                                    type="radio"
+                                    value="moe"
+                                    />
+                                    Moe
+                                </label>
+                                <label>
+                                    <Field
+                                    name="stooge"
+                                    component={CustomRadio}
+                                    type="radio"
+                                    value="curly"
+                                    />
+                                    Curly
+                                </label>
+                            </div>
+                            <div>
+                                <Field name="notes" component={CustomTextField} multiline label="Notes" variant='outlined' style={{ marginBottom: '1em' }} />
+                            </div>
+                        </Wizard.Page>
                     </Wizard>
                 </Paper>
             </div>
