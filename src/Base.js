@@ -174,10 +174,11 @@ class Base extends React.Component {
                                     <Field name="notes" component={CustomTextField} multiline label="Notes" variant='outlined' style={{ marginBottom: '1em' }} />
                                 </div>
                                 <div className="buttons">
-                                    <Button variant='contained' color='primary' type='submit' style={{ marginRight: '1em' }}>Submit</Button>
-                                    <Button variant='contained' onClick={reset}>Reset</Button>
+                                    <Button variant='contained' onClick={reset} style={{ marginRight: '1em' }}>Reset</Button>
+                                    <Button variant='contained' color='primary' type='submit' >Submit</Button>
                                 </div>
-                                <pre>{JSON.stringify(values, 0, 2)}</pre>
+                                <pre style={{ backgroundColor: 'lightgray', padding: '1em', boxShadow: 'inset 0px 0px 10px 0px rgba(0,0,0,0.4)'}}
+                                    >{JSON.stringify(values, 0, 2)}</pre>
                             </form>
                         )}
                     />

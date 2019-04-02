@@ -13,18 +13,6 @@ const onSubmit = async values => {
   window.alert(JSON.stringify(values, 0, 2))
 }
 
-const Error = ({ name }) => (
-  <Field
-    name={name}
-    subscribe={{ touched: true, error: true }}
-    render={({ meta: { touched, error } }) =>
-      touched && error ? <span>{error}</span> : null
-    }
-  />
-)
-
-const required = value => (value ? undefined : 'Required')
-
 const colors = [
     {
         value: '#ff0000',
@@ -83,12 +71,12 @@ class WizardIndex extends React.Component {
                                 variant="outlined"
                                 />
                             </div>
-                            <div>
+                            <div style={{ marginBottom: '1em' }}>
                                 <Field
                                     name="lastName"
                                     component={CustomTextField}
                                     type="text"
-                                    placeholder="Last Name"
+                                    label="Last Name"
                                     variant='outlined'
                                 />
                             </div>
@@ -121,7 +109,7 @@ class WizardIndex extends React.Component {
                                     select
                                     variant='outlined'
                                     label='Favorite Color'
-                                    fullWidth
+                                    style={{ width: '10em' }}
                                 >
                                     { colors.map(option => (
                                         <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>

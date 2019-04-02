@@ -4,7 +4,6 @@ import './index.css';
 
 import Base from './Base';
 import WizardIndex from './WizardIndex';
-import Wizard from './Wizard';
 
 const App = () => (
     <React.Fragment>
