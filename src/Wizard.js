@@ -9,18 +9,21 @@ export default class Wizard extends React.Component {
     super(props)
     this.state = {
       page: 0,
-      values: props.initialValues || {}
+      values: props.initialValues || {},
+      activeStep: 0
     }
   }
   next = values =>
     this.setState(state => ({
       page: Math.min(state.page + 1, this.props.children.length - 1),
-      values
+      values,
+      activeStep: this.state.activeStep + 1
     }))
 
   previous = () =>
     this.setState(state => ({
-      page: Math.max(state.page - 1, 0)
+      page: Math.max(state.page - 1, 0),
+      activeStep: this.state.activeStep - 1
     }))
 
   /**

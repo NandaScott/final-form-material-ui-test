@@ -4,7 +4,7 @@ import Wizard from './Wizard'
 import CustomCheckbox from "./CustomCheckbox";
 import CustomRadio from "./CustomRadio";
 import CustomTextField from "./CustomTextField";
-import { Paper, Typography, MenuItem } from '@material-ui/core';
+import { Paper, Typography, MenuItem, Stepper, Step, StepLabel } from '@material-ui/core';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -51,12 +51,26 @@ const toppings = [
     }
 ]
 
+const steps = [
+    'First step',
+    'Second step',
+    'Third step',
+    'Final step'
+]
+
 class WizardIndex extends React.Component {
     render() {
         return (
             <div style={{ margin: '5em' }}>
                 <Paper style={{ padding: '5em' }}>
                     <Typography variant='h2' gutterBottom>Wizard Form</Typography>
+                    <Stepper activeStep={this.props.activeStep} alternativeLabel>
+                        {steps.map((label, index) => (
+                            <Step key={index}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
                     <Wizard
                     initialValues={{ employed: true, stooge: 'larry' }}
                     onSubmit={onSubmit}
