@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import CustomCheckbox from "./CustomCheckbox";
 import CustomRadio from "./CustomRadio";
 import CustomTextField from "./CustomTextField";
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Paper } from '@material-ui/core';
 
 
 class Base extends React.Component {
@@ -58,128 +58,130 @@ class Base extends React.Component {
     render() {
         return (
             <div style={{ margin: '5em' }}>
-                <Typography variant='h1'>Wizard test</Typography>
-                <Form
-                    onSubmit={this.onSubmit}
-                    initialValues={{ employed: true, stooge: "larry" }}
-                    validate={this.validate}
-                    render={({ handleSubmit, reset, submitting, pristine, values }) => (
-                        <form onSubmit={handleSubmit}>
-                            <div style={{ marginBottom: '1em' }}>
-                                <Field
-                                name="firstName"
-                                component={CustomTextField}
-                                type="text"
-                                label="First Name"
-                                variant="outlined"
-                                />
-                            </div>
-                            <div style={{ marginBottom: '1em' }}>
-                                <Field
-                                name="lastName"
-                                component={CustomTextField}
-                                type="text"
-                                label="Last Name"
-                                variant="outlined"
-                                />
-                            </div>
-                            <div style={{ marginBottom: '1em' }}>
-                                <Field
-                                name="email"
-                                component={CustomTextField}
-                                type="email"
-                                label="Email"
-                                variant="outlined"
-                                />
-                            </div>
-                            <div>
-                                <Field name="employed" component={CustomCheckbox} type="checkbox" />
-                                <label>Employed?</label>
-                            </div>
-                            <div>
-                                <div>
-                                    <label>Favorite Stooge?</label>
-                                <label>
+                <Paper style={{ padding: '5em' }}>
+                    <Typography variant='h2'>Simple Form</Typography>
+                    <Form
+                        onSubmit={this.onSubmit}
+                        initialValues={{ employed: true, stooge: "larry" }}
+                        validate={this.validate}
+                        render={({ handleSubmit, reset, submitting, pristine, values }) => (
+                            <form onSubmit={handleSubmit}>
+                                <div style={{ marginBottom: '1em' }}>
                                     <Field
-                                    name="stooge"
-                                    component={CustomRadio}
-                                    type="radio"
-                                    value="larry"
-                                    />{" "}
-                                    Larry
-                                </label>
-                                <label>
-                                    <Field
-                                    name="stooge"
-                                    component={CustomRadio}
-                                    type="radio"
-                                    value="moe"
-                                    />{" "}
-                                    Moe
-                                </label>
-                                <label>
-                                    <Field
-                                    name="stooge"
-                                    component={CustomRadio}
-                                    type="radio"
-                                    value="curly"
-                                    />{" "}
-                                    Curly
-                                </label>
+                                    name="firstName"
+                                    component={CustomTextField}
+                                    type="text"
+                                    label="First Name"
+                                    variant="outlined"
+                                    />
                                 </div>
-                            </div>
-                            <div>
-                                <label>Sauces</label>
-                                <div>
-                                <label>
+                                <div style={{ marginBottom: '1em' }}>
                                     <Field
-                                    name="sauces"
-                                    component={CustomCheckbox}
-                                    type="checkbox"
-                                    value="ketchup"
-                                    />{" "}
-                                    Ketchup
-                                </label>
-                                <label>
-                                    <Field
-                                    name="sauces"
-                                    component={CustomCheckbox}
-                                    type="checkbox"
-                                    value="mustard"
-                                    />{" "}
-                                    Mustard
-                                </label>
-                                <label>
-                                    <Field
-                                    name="sauces"
-                                    component={CustomCheckbox}
-                                    type="checkbox"
-                                    value="salsa"
-                                    />{" "}
-                                    Salsa
-                                </label>
-                                <label>
-                                    <Field
-                                    name="sauces"
-                                    component={CustomCheckbox}
-                                    type="checkbox"
-                                    value="guacamole"
-                                    />{" "}
-                                    Guacamole
-                                </label>
+                                    name="lastName"
+                                    component={CustomTextField}
+                                    type="text"
+                                    label="Last Name"
+                                    variant="outlined"
+                                    />
                                 </div>
-                            </div>
-                            <div>
-                                <Field name="notes" component={CustomTextField} multiline label="Notes" variant='outlined' style={{ marginBottom: '1em' }} />
-                            </div>
-                            <div className="buttons">
-                                <Button variant='contained' color='primary' type='submit' style={{ marginRight: '1em' }}>Submit</Button>
-                                <Button variant='contained' onClick={reset}>Reset</Button>
-                            </div>
-                            <pre>{JSON.stringify(values, 0, 2)}</pre>
-                        </form>
-                    )}
-            />
+                                <div style={{ marginBottom: '1em' }}>
+                                    <Field
+                                    name="email"
+                                    component={CustomTextField}
+                                    type="email"
+                                    label="Email"
+                                    variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <Field name="employed" component={CustomCheckbox} type="checkbox" />
+                                    <label>Employed?</label>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label>Favorite Stooge?</label>
+                                    <label>
+                                        <Field
+                                        name="stooge"
+                                        component={CustomRadio}
+                                        type="radio"
+                                        value="larry"
+                                        />{" "}
+                                        Larry
+                                    </label>
+                                    <label>
+                                        <Field
+                                        name="stooge"
+                                        component={CustomRadio}
+                                        type="radio"
+                                        value="moe"
+                                        />{" "}
+                                        Moe
+                                    </label>
+                                    <label>
+                                        <Field
+                                        name="stooge"
+                                        component={CustomRadio}
+                                        type="radio"
+                                        value="curly"
+                                        />{" "}
+                                        Curly
+                                    </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label>Sauces</label>
+                                    <div>
+                                    <label>
+                                        <Field
+                                        name="sauces"
+                                        component={CustomCheckbox}
+                                        type="checkbox"
+                                        value="ketchup"
+                                        />{" "}
+                                        Ketchup
+                                    </label>
+                                    <label>
+                                        <Field
+                                        name="sauces"
+                                        component={CustomCheckbox}
+                                        type="checkbox"
+                                        value="mustard"
+                                        />{" "}
+                                        Mustard
+                                    </label>
+                                    <label>
+                                        <Field
+                                        name="sauces"
+                                        component={CustomCheckbox}
+                                        type="checkbox"
+                                        value="salsa"
+                                        />{" "}
+                                        Salsa
+                                    </label>
+                                    <label>
+                                        <Field
+                                        name="sauces"
+                                        component={CustomCheckbox}
+                                        type="checkbox"
+                                        value="guacamole"
+                                        />{" "}
+                                        Guacamole
+                                    </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <Field name="notes" component={CustomTextField} multiline label="Notes" variant='outlined' style={{ marginBottom: '1em' }} />
+                                </div>
+                                <div className="buttons">
+                                    <Button variant='contained' color='primary' type='submit' style={{ marginRight: '1em' }}>Submit</Button>
+                                    <Button variant='contained' onClick={reset}>Reset</Button>
+                                </div>
+                                <pre>{JSON.stringify(values, 0, 2)}</pre>
+                            </form>
+                        )}
+                    />
+                </Paper>
             </div>
         )
     }
