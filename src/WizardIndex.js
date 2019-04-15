@@ -61,7 +61,7 @@ const steps = [
 class WizardIndex extends React.Component {
     render() {
         return (
-            <div style={{ margin: '5em' }}>
+            <div style={{ marginTop: '5em', marginBottom: '5em' }}>
                 <Paper style={{ padding: '5em' }}>
                     <Typography variant='h2' gutterBottom>Wizard Form</Typography>
                     <Wizard
