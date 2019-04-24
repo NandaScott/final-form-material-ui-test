@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Base from './Base';
-import WizardIndex from './WizardIndex';
+import Base from './basic/Base';
+import WizardIndex from './wizard/WizardIndex';
 import { Grid } from '@material-ui/core';
-import FinalFormExample from './FinalFormExample';
+import FinalFormExample from './ffexample/FinalFormExample';
 
 const App = () => (
     <React.Fragment>

@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
-import CustomCheckbox from "./CustomCheckbox";
-import CustomRadio from "./CustomRadio";
-import CustomTextField from "./CustomTextField";
+import CustomCheckbox from "../assets/CustomCheckbox";
+import CustomRadio from "../assets/CustomRadio";
+import CustomTextField from "../assets/CustomTextField";
 import { Typography, Button, Paper } from '@material-ui/core';
 
 

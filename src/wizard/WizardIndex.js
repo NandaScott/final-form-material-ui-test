@@ -1,9 +1,9 @@
 import React from 'react'
 import { Field } from 'react-final-form'
 import Wizard from './Wizard'
-import CustomCheckbox from "./CustomCheckbox";
-import CustomRadio from "./CustomRadio";
-import CustomTextField from "./CustomTextField";
+import CustomCheckbox from "../assets/CustomCheckbox";
+import CustomRadio from "../assets/CustomRadio";
+import CustomTextField from "../assets/CustomTextField";
 import { Paper, Typography, MenuItem } from '@material-ui/core';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
