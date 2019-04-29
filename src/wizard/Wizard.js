@@ -67,20 +67,20 @@ export default class Wizard extends React.Component {
         <Form
           initialValues={values}
           validate={this.validate}
-          onSubmit={this.handleSubmit}>
-          {({ handleSubmit, submitting, values }) => (
-            <form onSubmit={handleSubmit}>
-              <div style={{ marginBottom: '2em' }}>
-                {activePage}
-              </div>
-              <div className="buttons">
-                {page > 0 && <Button variant='contained' onClick={this.previous} style={{ marginRight: '1em' }}>Previous</Button>}
-                {!isLastPage && <Button variant='contained' type='submit' style={{ marginRight: '1em' }}>Next</Button>}
-                {isLastPage && <Button variant='contained' color='primary' type='submit' style={{ marginRight: '1em' }}>Submit</Button>}
-              </div>
-              <pre style={{ backgroundColor: 'lightgray', padding: '1em', boxShadow: 'inset 0px 0px 10px 0px rgba(0,0,0,0.4)'}}>{JSON.stringify(values, 0, 2)}</pre>
-            </form>
-          )}
+          onSubmit={this.handleSubmit}
+          render={({ handleSubmit, submitting, values }) => (
+              <form onSubmit={handleSubmit}>
+                <div style={{ marginBottom: '2em' }}>
+                  {activePage}
+                </div>
+                <div className="buttons">
+                  {page > 0 && <Button variant='contained' onClick={this.previous} style={{ marginRight: '1em' }}>Previous</Button>}
+                  {!isLastPage && <Button variant='contained' type='submit' style={{ marginRight: '1em' }}>Next</Button>}
+                  {isLastPage && <Button variant='contained' color='primary' type='submit' style={{ marginRight: '1em' }}>Submit</Button>}
+                </div>
+                <pre style={{ backgroundColor: 'lightgray', padding: '1em', boxShadow: 'inset 0px 0px 10px 0px rgba(0,0,0,0.4)'}}>{JSON.stringify(values, 0, 2)}</pre>
+              </form>
+            )}>
         </Form>
       </React.Fragment>
     )
