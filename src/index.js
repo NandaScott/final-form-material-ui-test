@@ -6,21 +6,25 @@ import Base from './Base';
 import WizardIndex from './WizardIndex';
 import { Grid } from '@material-ui/core';
 import FinalFormExample from './FinalFormExample';
+import AutosuggestAddress from './AutosuggestAddress';
 
 const App = () => (
-    <React.Fragment>
-        <Grid container xs={12} spacing={24}>
-            <Grid item xs>
-                <Base />
+    <div style={{ margin: '10em' }}>
+        <Grid container spacing={16}>
+            <Grid item xs={12}>
+                <AutosuggestAddress />
             </Grid>
-            <Grid item xs>
-                <WizardIndex />
-            </Grid>
-            <Grid item xs>
+            <Grid item xs={12}>
                 <FinalFormExample />
             </Grid>
+            <Grid item xs={6}>
+                <Base />
+            </Grid>
+            <Grid item xs={6}>
+                <WizardIndex />
+            </Grid>
         </Grid>
-    </React.Fragment>
+    </div>
 )
 
 ReactDOM.render(<App />, document.getElementById('root'));
